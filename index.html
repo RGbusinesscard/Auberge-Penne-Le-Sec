@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Auberge le Domanial — Mini site</title>
+  <meta name="description" content="Contacts, horaires et liens utiles de l’Auberge le Domanial (Pennes-le-Sec)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Couleurs (proches du site) — je peux les affiner si tu veux les HEX exacts */
+      --burgundy:#640c26; /* bordeaux principal */
+      --burgundy-2:#500a1f; /* foncé */
+      --rose:#c9a5b0;       /* texte secondaire chaud */
+      --bg:#0b0a0d;         /* fond sombre pour contraste */
+      --card:rgba(255,255,255,.035);
+      --stroke:rgba(255,255,255,.10);
+      --text:#f6f6f7;
+      --muted:#cfc8ce;
+      --chip:#ffffff;
+      --shadow:0 20px 60px rgba(0,0,0,.45);
+      --radius:20px;
+      --space: clamp(14px, 2.4vw, 22px);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
 
+    /* NAV collante minimaliste */
+    .topbar{position:sticky;top:0;z-index:100;background:linear-gradient(180deg, rgba(11,10,13,.9), rgba(11,10,13,.6) 70%, transparent);backdrop-filter:blur(10px)}
+    .topbar .wrap{max-width:1100px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--burgundy),var(--burgundy-2));display:grid;place-items:center;font-weight:700;box-shadow:var(--shadow)}
+    .brand h1{font-family:"Playfair Display",serif;font-size:20px;margin:0;letter-spacing:.4px}
+    .actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--stroke);transition:transform .15s ease, background .15s ease}
+    .btn:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+
+    /* HERO élégant */
+    .hero{position:relative;isolation:isolate;padding: clamp(54px, 8vw, 90px) 18px;background:linear-gradient(160deg,var(--burgundy) 0%, var(--burgundy-2) 100%)}
+    .container{max-width:1100px;margin:0 auto}
+    .hero-card{background:rgba(255,255,255,.06);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding: clamp(20px, 4vw, 34px)}
+    .overtitle{letter-spacing:.22em;text-transform:uppercase;color:var(--rose);font-weight:600;font-size:12px}
+    .title{font-family:"Playfair Display",serif;font-weight:700;font-size: clamp(28px, 5vw, 44px);margin:.2em 0 .2em}
+    .subtitle{color:#f3e9ee;opacity:.9;max-width:60ch}
+    .cta-row{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+    .cta{background:#fff;color:#1b1b1f;border-radius:999px;padding:12px 18px;font-weight:600}
+    .ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+
+    /* SECTIONS */
+    section{padding: clamp(26px, 5vw, 46px) 18px}
+    .grid{display:grid;gap:16px}
+    @media(min-width:760px){.grid{grid-template-columns:1.2fr .8fr}}
+
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding: clamp(18px, 3.2vw, 26px)}
+    .h2{font-size: clamp(18px, 3vw, 22px);margin:0 0 10px;font-weight:700;letter-spacing:.3px}
+    .sep{height:1px;background:var(--stroke);margin:12px 0 14px}
+    .list{display:grid;gap:12px}
+    .item{display:flex;gap:12px;align-items:flex-start}
+    .icon{width:30px;height:30px;flex:0 0 30px;border-radius:10px;background:linear-gradient(135deg,var(--burgundy),var(--burgundy-2));display:grid;place-items:center}
+    .label{color:var(--muted)}
+    .mono{font-variant-numeric:tabular-nums}
+
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .chip{background:#fff;color:#191a1f;border-radius:999px;padding:8px 12px;font-size:13px;border:1px solid #eee}
+
+    footer{padding:34px 18px;color:#a9a3aa;text-align:center}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand">
+        <div class="brand-logo">🍷</div>
+        <h1>Auberge le Domanial</h1>
+      </div>
+      <div class="actions">
+        <a class="btn" href="tel:+33475217919">📞 04 75 21 79 19</a>
+        <a class="btn" href="tel:+33614597646">📱 06 14 59 76 46</a>
+        <a class="btn" href="mailto:aubergeledomanial@gmail.com">✉️ Email</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps?q=370+Rue+Charles+Piot,+26340+Pennes-le-Sec">📍 Itinéraire</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="overtitle">Pennes‑le‑Sec • Drôme</div>
+        <div class="title">Chambres & hébergements • Cuisine du terroir</div>
+        <p class="subtitle">Bienvenue à l’Auberge le Domanial et au restaurant <strong>La table de Marie</strong>. Réservez, contactez‑nous ou trouvez l’itinéraire en un clic.</p>
+        <div class="cta-row">
+          <a class="cta" href="tel:+33475217919">Appeler l’auberge</a>
+          <a class="cta ghost" href="https://www.aubergepenneslesec.fr/reservation/" target="_blank" rel="noopener">Réserver en ligne</a>
+          <a class="cta ghost" href="https://www.aubergepenneslesec.fr/visite-virtuelle-360/" target="_blank" rel="noopener">Visite 360°</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENU -->
+  <section>
+    <div class="container grid">
+
+      <div class="card">
+        <h2 class="h2">Horaires par saison</h2>
+        <div class="sep"></div>
+        <div class="list">
+          <div class="item">
+            <div class="icon">🏨</div>
+            <div>
+              <div><strong>Mai, Juin, Juillet, Août</strong></div>
+              <div class="label">L’auberge</div>
+              <div class="mono">Tous les jours, 7h → 23h</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="icon">🍽️</div>
+            <div>
+              <div><strong>Mai, Juin, Juillet, Août</strong></div>
+              <div class="label">La table de Marie</div>
+              <div class="mono">12h‑14h & 19h‑22h</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="icon">🏨</div>
+            <div>
+              <div><strong>Avril, Mai, Septembre</strong></div>
+              <div class="label">L’auberge</div>
+              <div>Pension <em>sur réservation</em></div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="icon">🍽️</div>
+            <div>
+              <div><strong>Avril, Mai, Septembre</strong></div>
+              <div class="label">La table de Marie</div>
+              <div>WE <em>sur réservation</em></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h2">Contacts</h2>
+        <div class="sep"></div>
+        <div class="list">
+          <div class="item"><div class="icon">📞</div><div><div class="label">Téléphone</div><div class="mono">04 75 21 79 19</div></div></div>
+          <div class="item"><div class="icon">📱</div><div><div class="label">Mobile</div><div class="mono">06 14 59 76 46</div></div></div>
+          <div class="item"><div class="icon">✉️</div><div><div class="label">E‑mail</div><a href="mailto:aubergeledomanial@gmail.com">aubergeledomanial@gmail.com</a></div></div>
+          <div class="item"><div class="icon">📍</div><div><div class="label">Adresse</div>370 Rue Charles Piot<br>26340 Pennes‑le‑Sec</div></div>
+        </div>
+        <div class="chips">
+          <a class="chip" href="tel:+33475217919">Appeler</a>
+          <a class="chip" href="sms:+33614597646">Envoyer un SMS</a>
+          <a class="chip" href="mailto:aubergeledomanial@gmail.com">Écrire un e‑mail</a>
+          <a class="chip" target="_blank" rel="noopener" href="https://www.google.com/maps?q=370+Rue+Charles+Piot,+26340+Pennes-le-Sec">Ouvrir Google Maps</a>
+        </div>
+      </div>
+
+      <div class="card" style="grid-column:1/-1">
+        <h2 class="h2">Liens utiles</h2>
+        <div class="sep"></div>
+        <div class="chips">
+          <a class="chip" target="_blank" rel="noopener" href="https://www.aubergepenneslesec.fr/">Site officiel</a>
+          <a class="chip" target="_blank" rel="noopener" href="https://www.aubergepenneslesec.fr/visite-virtuelle-360/">Visite 360°</a>
+          <a class="chip" target="_blank" rel="noopener" href="https://www.aubergepenneslesec.fr/reservation/">Réservation</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    Mini‑site rapide RG.card — design premium inspiré du site officiel (couleurs ajustables au besoin).
+  </footer>
+</body>
+</html>
