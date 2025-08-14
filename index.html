@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Activation en cours</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
       background: linear-gradient(-45deg, #0b1e35, #12294a, #0d1a2d, #1c355c);
       background-size: 400% 400%;
       animation: gradientMove 12s ease infinite;
-      color: #fff;
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      height: 100vh;
+      text-align: center;
       padding: 20px;
     }
 
@@ -27,6 +26,22 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    /* Loader rond */
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.15);
+      border-top: 6px solid #ffffff;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     h1 {
@@ -39,44 +54,47 @@
       font-size: 1rem;
       line-height: 1.5;
       max-width: 650px;
-      margin: 0 auto 20px;
+      margin: 0 auto 25px;
       color: #e3e8ef;
     }
 
+    /* Nouveau bouton premium */
     .btn {
-      display: inline-block;
-      padding: 12px 20px;
-      background: linear-gradient(90deg, #2563eb, #1e40af);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: linear-gradient(90deg, #3b82f6, #2563eb, #1e40af);
       color: white;
-      border-radius: 8px;
-      font-weight: 500;
+      border-radius: 50px;
+      font-weight: 600;
       text-decoration: none;
       font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
       transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.1);
     }
 
     .btn:hover {
-      background: linear-gradient(90deg, #1e40af, #2563eb);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+      background: linear-gradient(90deg, #2563eb, #1e40af, #3b82f6);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn span {
+      font-size: 1.2rem;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 1.3rem;
-      }
-      p {
-        font-size: 0.95rem;
-      }
-      .btn {
-        font-size: 0.9rem;
-        padding: 10px 16px;
-      }
+      h1 { font-size: 1.3rem; }
+      p { font-size: 0.95rem; }
+      .btn { padding: 12px 20px; font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
+
+  <div class="loader"></div>
   <h1>Activation en cours</h1>
   <p>
     Un délai volontaire de <strong>24 à 72 heures</strong> est laissé avant l’activation complète du lien sur votre carte.<br><br>
@@ -85,6 +103,9 @@
     Cette procédure optimise la perception et la mise en avant de votre site par les moteurs de recherche.<br><br>
     Un message automatique vous sera adressé dès la mise en ligne de votre "Mini site".
   </p>
-  <a href="tel:+33764021268" class="btn">📞 Nous contacter en cas de problème</a>
+  <a href="tel:+33764021268" class="btn">
+    <span>📞</span> Nous contacter en cas de problème
+  </a>
+
 </body>
 </html>
