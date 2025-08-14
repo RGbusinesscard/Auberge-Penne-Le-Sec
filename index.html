@@ -153,8 +153,8 @@
           <a class="chip" href="sms:+33614597646">Envoyer un SMS</a>
           <a class="chip" href="mailto:aubergeledomanial@gmail.com">Écrire un e-mail</a>
           <a class="chip" target="_blank" rel="noopener" href="https://www.google.com/maps?q=370+Rue+Charles+Piot,+26340+Pennes-le-Sec">Itinéraire (Google Maps)</a>
-          <!-- Nouveau bouton : Ajouter le contact -->
-          <a class="chip" href="auberge-le-domanial.vcf" download>Ajouter le contact</a>
+          <!-- Ajouter le contact : ouverture immédiate de la vCard -->
+          <button class="chip" type="button" onclick="addContact()">Ajouter le contact</button>
         </div>
       </div>
 
@@ -171,5 +171,40 @@
   <footer>
     Mini-site rapide RG.card — design premium inspiré du site officiel (couleurs ajustables).
   </footer>
+
+  <script>
+    function addContact(){
+      const vcf = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Auberge Le Domanial',
+        'ORG:Auberge Le Domanial',
+        'TEL;TYPE=work,voice:+33 4 75 21 79 19',
+        'TEL;TYPE=cell,voice:+33 6 14 59 76 46',
+        'EMAIL:aubergeledomanial@gmail.com',
+        'ADR;TYPE=work:;;370 Rue Charles Piot;Pennes-le-Sec;;26340;France',
+        'URL:https://www.aubergepenneslesec.fr/',
+        'END:VCARD'
+      ].join('\\n');
+
+      const blob = new Blob([vcf], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      // iOS préfère une navigation directe ; ailleurs on déclenche un "click" de téléchargement
+      const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      if (isiOS) {
+        window.location.href = url; // ouvre la fiche contact directement
+      } else {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'auberge-le-domanial.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }
+
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    }
+  </script>
 </body>
 </html>
