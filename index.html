@@ -6,19 +6,20 @@
   <title>Activation en cours</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* Reset et style global */
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
       background: linear-gradient(-45deg, #0b1e35, #12294a, #0d1a2d, #1c355c);
       background-size: 400% 400%;
       animation: gradientMove 12s ease infinite;
-      font-family: 'Poppins', sans-serif;
       color: #fff;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
       padding: 20px;
     }
 
@@ -28,65 +29,62 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Conteneur */
-    .container {
-      max-width: 680px;
-      background: rgba(255, 255, 255, 0.07);
-      padding: 35px 40px;
-      border-radius: 18px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    /* Titre */
     h1 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 600;
-      margin-bottom: 20px;
-      letter-spacing: 0.5px;
+      margin-bottom: 15px;
     }
 
-    /* Paragraphe */
     p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 25px;
+      font-size: 1rem;
+      line-height: 1.5;
+      max-width: 650px;
+      margin: 0 auto 20px;
       color: #e3e8ef;
     }
 
-    /* Bouton */
     .btn {
       display: inline-block;
-      padding: 14px 28px;
+      padding: 12px 20px;
       background: linear-gradient(90deg, #2563eb, #1e40af);
       color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 500;
       text-decoration: none;
       font-size: 1rem;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
       background: linear-gradient(90deg, #1e40af, #2563eb);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Activation en cours</h1>
-    <p>
-      Un délai volontaire de <strong>24 à 72 heures</strong> est laissé avant l’activation complète du lien sur votre carte.<br><br>
-      Ce temps permet à l’algorithme de référencement de détecter et d’intégrer correctement votre lien.<br><br>
-      Une fois cette étape terminée, la carte se met automatiquement en service.<br><br>
-      Cette procédure optimise la perception et la mise en avant de votre site par les moteurs de recherche.<br><br>
-      Un message automatique vous sera adressé dès la mise en ligne de votre "Mini site".
-    </p>
-    <a href="tel:+33764021268" class="btn">📞 Nous contacter en cas de problème</a>
-  </div>
+  <h1>Activation en cours</h1>
+  <p>
+    Un délai volontaire de <strong>24 à 72 heures</strong> est laissé avant l’activation complète du lien sur votre carte.<br><br>
+    Ce temps permet à l’algorithme de référencement de détecter et d’intégrer correctement votre lien.<br><br>
+    Une fois cette étape terminée, la carte se met automatiquement en service.<br><br>
+    Cette procédure optimise la perception et la mise en avant de votre site par les moteurs de recherche.<br><br>
+    Un message automatique vous sera adressé dès la mise en ligne de votre "Mini site".
+  </p>
+  <a href="tel:+33764021268" class="btn">📞 Nous contacter en cas de problème</a>
 </body>
 </html>
